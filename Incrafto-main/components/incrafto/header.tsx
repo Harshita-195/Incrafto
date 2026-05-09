@@ -40,7 +40,7 @@ export function Header() {
       </div>
 
       {/* Main navigation */}
-      <nav className="bg-white shadow-sm py-4 px-4">
+      <nav className="bg-[#F7F4ED]/90 backdrop-blur-xl border-b border-slate-200/60 shadow-[0_4px_30px_rgba(15,23,42,0.04)] py-4 px-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">

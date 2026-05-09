@@ -24,9 +24,9 @@ export function Hero() {
           {/* Left Content */}
           <div>
             <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-balance">
-              <span className="text-[#3498db]">Craft Your Career</span>
+              <span className="text-[#146377]">Craft Your Career</span>
               <br />
-              <span className="text-[#3498db]">Learn With Incrafto</span>
+              <span className="text-[#146377]">Learn With Incrafto</span>
             </h1>
             <p className="mt-6 text-xl lg:text-2xl text-[#2d3e50] font-medium">
               Upskill Today, Succeed Tomorrow
