@@ -8,7 +8,6 @@ import { AboutSection } from '@/components/sections/about-section'
 import { PlacementsSection } from '@/components/sections/placements-section'
 import { TestimonialsSection } from '@/components/sections/testimonials-section'
 import { CTASection } from '@/components/sections/cta-section'
-
 export default function HomePage() {
   return (
     <main className="min-h-screen">
