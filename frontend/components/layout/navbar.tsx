@@ -1,13 +1,12 @@
-
 'use client'
 
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Phone, Mail } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { EnquiryModal } from '@/components/modals/enquiry-modal'
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -18,9 +17,10 @@ const navLinks = [
 ]
 
 export function Navbar() {
+  const router = useRouter()
+
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [isEnquiryOpen, setIsEnquiryOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,7 +42,6 @@ export function Navbar() {
           isScrolled ? 'glass shadow-lg' : 'bg-transparent'
         }`}
       >
-        {/* Top bar */}
         <div
           className={`border-b border-border/50 transition-all duration-300 ${
             isScrolled
@@ -52,7 +51,6 @@ export function Navbar() {
         >
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-end gap-6 py-2 text-sm text-muted-foreground">
-              
               <a
                 href="mailto:info@incrafto.in"
                 className="flex items-center gap-2 hover:text-primary transition-colors"
@@ -70,16 +68,13 @@ export function Navbar() {
                 <Phone className="h-4 w-4" />
                 <span>9211567120</span>
               </a>
-
             </div>
           </div>
         </div>
 
-        {/* Main navbar */}
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
 
-            {/* Logo */}
             <Link href="/" className="flex items-center gap-3">
               <motion.div
                 whileHover={{ scale: 1.05 }}
@@ -100,7 +95,6 @@ export function Navbar() {
               </motion.div>
             </Link>
 
-            {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center gap-1">
               {navLinks.map((link) => (
                 <Link
@@ -115,26 +109,24 @@ export function Navbar() {
               ))}
             </nav>
 
-            {/* CTA Button */}
             <div className="hidden md:flex items-center gap-4">
-
               <motion.div
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
                 <Button
-                  onClick={() => setIsEnquiryOpen(true)}
-                  className="relative overflow-hidden bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-6 glow"
+                  onClick={() =>
+                    router.push('/student-login')
+                  }
+                  className="relative overflow-hidden bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold px-6 rounded-xl shadow-lg shadow-blue-500/20 transition-all duration-300 hover:scale-105"
                 >
                   <span className="relative z-10">
-                    Enquire Now
+                    🎓 Student Login
                   </span>
                 </Button>
               </motion.div>
-
             </div>
 
-            {/* Mobile Menu Button */}
             <button
               onClick={() =>
                 setIsMobileMenuOpen(!isMobileMenuOpen)
@@ -169,7 +161,6 @@ export function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Menu */}
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
@@ -211,11 +202,11 @@ export function Navbar() {
                   <Button
                     onClick={() => {
                       setIsMobileMenuOpen(false)
-                      setIsEnquiryOpen(true)
+                      router.push('/student-login')
                     }}
                     className="w-full bg-primary hover:bg-primary/90"
                   >
-                    Enquire Now
+                    🎓 Student Login
                   </Button>
                 </motion.div>
 
@@ -224,12 +215,6 @@ export function Navbar() {
           )}
         </AnimatePresence>
       </motion.header>
-
-      <EnquiryModal
-        open={isEnquiryOpen}
-        onOpenChange={setIsEnquiryOpen}
-      />
     </>
   )
 }
-
