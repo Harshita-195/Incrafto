@@ -18,7 +18,7 @@ import {
 
 export default function StudentDashboard() { 
 return (
-<div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-cyan-50">
+<div className="min-h-screen bg-gradient-to-br from-[#eef4ff] via-[#e7f0ff] to-[#f3e8ff]">
 
   <div className="fixed inset-0 overflow-hidden pointer-events-none">
 
@@ -30,7 +30,7 @@ return (
 
   <div className="relative flex">
 
-    <aside className="hidden lg:flex flex-col w-72 h-screen sticky top-0 bg-white/70 backdrop-blur-xl border-r border-white/50">
+    <aside className="hidden lg:flex flex-col w-72 h-screen sticky top-0 bg-white/80 backdrop-blur-xl border-r border-white/60">
 
       <div className="p-8">
 
@@ -120,7 +120,7 @@ return (
         transition={{
           duration: 0.7,
         }}
-        className="relative overflow-hidden rounded-[36px] bg-gradient-to-r from-blue-600 via-cyan-500 to-purple-600 p-10 text-white mb-8"
+        className="relative overflow-hidden rounded-[36px] bg-gradient-to-r from-[#2563eb] via-[#4f46e5] to-[#7c3aed] p-10 text-white mb-8"
       >
 
         <div className="absolute right-0 top-0 w-80 h-80 bg-white/10 rounded-full blur-2xl" />
@@ -198,7 +198,7 @@ return (
               y: -8,
               scale: 1.03,
             }}
-            className="bg-white/70 backdrop-blur-xl border border-white/50 rounded-3xl p-6 shadow-xl"
+            className="bg-white/80 backdrop-blur-xl border border-white/60 rounded-3xl p-6 shadow-xl"
           >
             <div
               className={`w-14 h-14 rounded-2xl bg-gradient-to-r ${item.color} flex items-center justify-center text-white mb-4`}
@@ -227,7 +227,7 @@ return (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="bg-white/70 backdrop-blur-xl border border-white/50 rounded-[32px] p-8 shadow-xl"
+          className="bg-white/80 backdrop-blur-xl border border-white/60 rounded-[32px] p-8 shadow-xl"
         >
 
           <div className="flex justify-between items-center mb-8">
@@ -314,7 +314,7 @@ return (
             opacity: 1,
             scale: 1,
           }}
-          className="bg-white/70 backdrop-blur-xl border border-white/50 rounded-[32px] p-8 shadow-xl"
+          className="bg-white/80 backdrop-blur-xl border border-white/60 rounded-[32px] p-8 shadow-xl"
         >
 
           <h2 className="text-3xl font-bold mb-10">
@@ -406,7 +406,7 @@ return (
 
         <motion.div
           whileHover={{ y: -5 }}
-          className="bg-white/70 backdrop-blur-xl border border-white/50 rounded-[32px] p-8 shadow-xl"
+          className="bg-white/80 backdrop-blur-xl border border-white/60 rounded-[32px] p-8 shadow-xl"
         >
           <h2 className="text-3xl font-bold mb-6">
             Assignments
@@ -433,7 +433,7 @@ return (
 
         <motion.div
           whileHover={{ y: -5 }}
-          className="bg-white/70 backdrop-blur-xl border border-white/50 rounded-[32px] p-8 shadow-xl"
+          className="bg-white/80 backdrop-blur-xl border border-white/60 rounded-[32px] p-8 shadow-xl"
         >
           <h2 className="text-3xl font-bold mb-6">
             Upcoming Classes
@@ -462,7 +462,7 @@ return (
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="bg-white/70 backdrop-blur-xl border border-white/50 rounded-[32px] p-8 shadow-xl mb-8"
+        className="bg-white/80 backdrop-blur-xl border border-white/60 rounded-[32px] p-8 shadow-xl mb-8"
       >
 
         <h2 className="text-3xl font-bold mb-8">
@@ -514,7 +514,7 @@ return (
 
         <motion.div
           whileHover={{ y: -5 }}
-          className="bg-white/70 backdrop-blur-xl border border-white/50 rounded-[32px] p-8 shadow-xl"
+          className="bg-white/80 backdrop-blur-xl border border-white/60 rounded-[32px] p-8 shadow-xl"
         >
           <Award
             className="text-purple-600 mb-5"
@@ -540,7 +540,7 @@ return (
 
         <motion.div
           whileHover={{ y: -5 }}
-          className="bg-white/70 backdrop-blur-xl border border-white/50 rounded-[32px] p-8 shadow-xl"
+          className="bg-white/80 backdrop-blur-xl border border-white/60 rounded-[32px] p-8 shadow-xl"
         >
           <Bell
             className="text-blue-600 mb-5"
@@ -570,7 +570,7 @@ return (
 
         <motion.div
           whileHover={{ y: -5 }}
-          className="bg-white/70 backdrop-blur-xl border border-white/50 rounded-[32px] p-8 shadow-xl"
+          className="bg-white/80 backdrop-blur-xl border border-white/60 rounded-[32px] p-8 shadow-xl"
         >
           <h2 className="text-2xl font-bold mb-5">
             Activity Timeline
