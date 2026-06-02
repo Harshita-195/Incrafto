@@ -20,6 +20,13 @@ interface CourseDetailProps {
   tools: string[]
   features: string[]
   certification: string[]
+  demoVideos?: DemoVideo[]
+}
+
+interface DemoVideo {
+  title: string
+  description: string
+  youtubeId: string
 }
 
 export function CourseDetail({
@@ -31,6 +38,7 @@ export function CourseDetail({
   tools,
   features,
   certification,
+  demoVideos = [],
 }: CourseDetailProps) {
   const [isEnquiryOpen, setIsEnquiryOpen] = useState(false)
   const [openSections, setOpenSections] = useState<number[]>([0])
@@ -177,6 +185,57 @@ export function CourseDetail({
                     ))}
                   </div>
                 </motion.div>
+
+                {/* Demo Videos */}
+{demoVideos.length > 0 && (
+  <motion.div
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.6 }}
+  >
+    <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
+      <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+        <Play className="h-5 w-5 text-primary" />
+      </div>
+      Course Demo Videos
+    </h2>
+
+    <p className="text-muted-foreground mb-6">
+      Explore sample lessons and project demonstrations from this course.
+    </p>
+
+    <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+      {demoVideos.map((video, index) => (
+        <motion.div
+          key={index}
+          whileHover={{ y: -5 }}
+          className="overflow-hidden rounded-2xl border border-border/50 bg-card shadow-lg"
+        >
+          <div className="aspect-video">
+            <iframe
+              width="100%"
+              height="100%"
+              src={`https://www.youtube.com/embed/${video.youtubeId}`}
+              title={video.title}
+              allowFullScreen
+            />
+          </div>
+
+          <div className="p-4">
+            <h3 className="font-semibold mb-2">
+              {video.title}
+            </h3>
+
+            <p className="text-sm text-muted-foreground">
+              {video.description}
+            </p>
+          </div>
+        </motion.div>
+      ))}
+    </div>
+  </motion.div>
+)}
 
                 {/* Course Syllabus */}
                 <motion.div

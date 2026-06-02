@@ -105,6 +105,23 @@ const fullStackCourse = {
     'Resume & LinkedIn optimization',
     'Placement Support Assistance',
   ],
+  demoVideos: [
+  {
+    title: 'Frontend Development with React',
+    description: 'Learn React, Tailwind CSS, routing, state management, and responsive UI development.',
+    youtubeId: 'Vi9bxu-M-ag',
+  },
+  {
+    title: 'Backend Development with Node.js',
+    description: 'Build REST APIs, authentication systems, and databases using Express, MongoDB, and MySQL.',
+    youtubeId: 'aRUhd1Wd3Sw',
+  },
+  {
+    title: 'AI-Powered Full Stack Projects',
+    description: 'Create intelligent applications using React, Node.js, databases, and AI tools.',
+    youtubeId: 'ofHYRdWQESo',
+  },
+],
   certification: [
     'InCrafto Certificate of Completion',
     'Job Assistance & Interview Preparation',
