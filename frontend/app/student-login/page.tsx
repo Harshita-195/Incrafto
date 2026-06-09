@@ -4,9 +4,63 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 
 export default function StudentLoginPage() {
+  const router = useRouter();
+
   const [showPassword, setShowPassword] = useState(false);
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [loading, setLoading] = useState(false);
+
+  const handleLogin = async () => {
+    try {
+      if (!email || !password) {
+        alert("Please fill all fields");
+        return;
+      }
+
+      setLoading(true);
+
+      const response = await axios.post(
+        "http://localhost:5000/api/auth/login",
+        {
+          email,
+          password,
+        }
+      );
+
+      alert("Login Successful");
+
+      // Save JWT token
+      localStorage.setItem(
+        "token",
+        response.data.token
+      );
+
+      // Save user details
+      localStorage.setItem(
+        "user",
+        JSON.stringify(response.data.user)
+      );
+
+      router.push("/student-dashboard");
+
+    } catch (error: any) {
+      console.log("LOGIN ERROR:", error);
+
+      alert(
+        error?.response?.data?.message ||
+        "Login Failed"
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-slate-950">
@@ -75,8 +129,15 @@ export default function StudentLoginPage() {
               Login to access your student portal
             </p>
 
-            <form className="mt-8 space-y-5">
+            <form
+              className="mt-8 space-y-5"
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleLogin();
+              }}
+            >
 
+              {/* Email */}
               <div>
                 <label className="mb-2 block text-sm text-slate-300">
                   Email Address
@@ -84,11 +145,16 @@ export default function StudentLoginPage() {
 
                 <input
                   type="email"
+                  value={email}
+                  onChange={(e) =>
+                    setEmail(e.target.value)
+                  }
                   placeholder="Enter your email"
                   className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white outline-none focus:border-blue-500"
                 />
               </div>
 
+              {/* Password */}
               <div>
                 <label className="mb-2 block text-sm text-slate-300">
                   Password
@@ -97,14 +163,26 @@ export default function StudentLoginPage() {
                 <div className="relative">
 
                   <input
-                    type={showPassword ? "text" : "password"}
+                    type={
+                      showPassword
+                        ? "text"
+                        : "password"
+                    }
+                    value={password}
+                    onChange={(e) =>
+                      setPassword(e.target.value)
+                    }
                     placeholder="Enter password"
                     className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white outline-none focus:border-blue-500"
                   />
 
                   <button
                     type="button"
-                    onClick={() => setShowPassword(!showPassword)}
+                    onClick={() =>
+                      setShowPassword(
+                        !showPassword
+                      )
+                    }
                     className="absolute right-4 top-3.5 text-slate-400"
                   >
                     {showPassword ? (
@@ -126,12 +204,16 @@ export default function StudentLoginPage() {
                 </Link>
               </div>
 
-              <Link
-  href="/student-dashboard"
-  className="block w-full rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 py-3 font-semibold text-white text-center transition hover:scale-[1.02]"
->
-  Login
-</Link>
+              {/* Login Button */}
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 py-3 font-semibold text-white transition hover:scale-[1.02]"
+              >
+                {loading
+                  ? "Logging In..."
+                  : "Login"}
+              </button>
 
             </form>
 
@@ -147,6 +229,7 @@ export default function StudentLoginPage() {
 
           </div>
         </motion.div>
+
       </div>
     </div>
   );
