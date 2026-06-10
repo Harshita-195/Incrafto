@@ -127,8 +127,13 @@ export default function AdminLoginPage() {
               </div>
 
               <Link
+<<<<<<< HEAD
                 href="/admin/dashboard"
                 className="block w-full rounded-xl bg-linear-to-r from-blue-600 to-purple-600 py-3 font-semibold tracking-tight text-center text-white transition hover:scale-[1.02]"
+=======
+                href="/admin-dashboard"
+                className="block w-full rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 py-3 font-semibold text-white text-center transition hover:scale-[1.02]"
+>>>>>>> 85fb30b92e4d90b76a1b125c22a6f9a841ef86f4
               >
                 Login
               </Link>
